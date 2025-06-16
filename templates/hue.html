@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Smart Home Lichtsteuerung</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/hue_style.css') }}">
+    <script>
+        let brightnessTimeout = {}; // Timer für Verzögerung der Updates
+
+        function fetchLights() {
+        fetch('/lights')
+            .then(response => response.json())
+            .then(data => {
+                console.log("Lichtdaten erhalten:", data);
+                let container = document.getElementById("lightsContainer");
+                container.innerHTML = "";  // Vorherigen Inhalt löschen
+
+                for (const [id, light] of Object.entries(data)) {
+                    let isDimmable = light.state.hasOwnProperty("bri");
+                    let brightness = isDimmable ? light.state.bri : 254;
+                    let isOn = light.state.on;
+                    
+                    // Berechne die nächstgelegene 10%-Stufe für die CSS-Klasse
+                    let fillClass = `fill-${Math.round((brightness / 254) * 10) * 10}`;
+
+                    let div = document.createElement("div");
+                    div.className = `light-tile ${isOn ? "on" : "off"} ${isDimmable ? "" : "no-dim"}`;
+                    div.innerHTML = `
+                        <div class="light-fill ${fillClass}"></div>
+                        <div class="light-icon">💡</div>
+                        <div class="light-name">${light.name}</div>
+                    `;
+
+                    // Kachel als Slider nutzen
+                    div.addEventListener("mousedown", (e) => startBrightnessAdjust(e, id, isDimmable));
+
+                    // Klick zum Ein- und Ausschalten
+                    div.addEventListener("click", () => toggleLight(id, !isOn));
+
+                    container.appendChild(div);
+                }
+            })
+            .catch(error => {
+                console.error("Fehler beim Laden der Lichtdaten:", error);
+                document.getElementById("lightsContainer").innerHTML = "<p>Fehler beim Laden der Lichtdaten.</p>";
+            });
+    }
+
+        function toggleLight(lightId, state) {
+            fetch('/toggle_light', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json',
+                    'X-CSRFToken': getCsrfToken()
+                 },
+                body: JSON.stringify({ light_id: lightId, state: state })
+            }).then(() => fetchLights());  // Nach Änderung aktualisieren
+        }
+
+        function setBrightness(lightId, brightness) {
+            console.log(`Helligkeit ändern für Licht ${lightId} auf ${brightness}`);
+
+            fetch('/brightness', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json',
+                    'X-CSRFToken': getCsrfToken()
+                 },
+                body: JSON.stringify({ light_id: lightId, brightness: Number(brightness) })
+            }).then(() => {
+                setTimeout(fetchLights, 1000);
+            }).catch(error => console.error("Fehler beim Senden des Brightness-Requests:", error));
+        }
+
+        function startBrightnessAdjust(event, lightId, isDimmable) {
+            if (!isDimmable) return; // Falls Lampe nicht dimmbar, nichts tun
+
+            let tile = event.currentTarget;
+            let rect = tile.getBoundingClientRect();
+
+            function adjustBrightness(e) {
+                let relX = e.clientX - rect.left;
+                let brightness = Math.max(0, Math.min(254, (relX / rect.width) * 254));
+                setBrightness(lightId, brightness);
+            }
+
+            function stopAdjust() {
+                window.removeEventListener("mousemove", adjustBrightness);
+                window.removeEventListener("mouseup", stopAdjust);
+            }
+
+            window.addEventListener("mousemove", adjustBrightness);
+            window.addEventListener("mouseup", stopAdjust);
+        }
+
+        setInterval(fetchLights, 5000);  // Auto-Refresh alle 5 Sekunden
+        window.onload = fetchLights;
+    </script>
+</head>
+<body>
+    <div class="main-container">
+        <h1>Smart Home Lichtsteuerung</h1>
+        <div id="lightsContainer" class="lights-container">Lade Lichter...</div>
+    </div>
+    <script src="{{ url_for('static', filename='js/csrf.js') }}"></script>
+</body>
+</html>

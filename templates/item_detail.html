@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Item Details - {{ item.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/item_detail.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ item.name }}</h1>
+
+        <div class="field">
+            <label>Kürzel:</label>
+            <div>{{ item.id }}</div>
+        </div>
+
+        <div class="field">
+            <label>Raum:</label>
+            <div>{{ item.room }}</div>
+        </div>
+
+        <div class="field">
+            <label>Position:</label>
+            <div>{{ item.position }}</div>
+        </div>
+
+        <div class="field">
+            <label>Inhalt:</label>
+            <div>{{ item.content }}</div>
+        </div>
+
+        <div class="field">
+            <label>Zuletzt geändert:</label>
+            <div>{{ item.last_modified }}</div>
+        </div>
+
+        <div class="field">
+            <label>Zuletzt abgerufen:</label>
+            <div>{{ previous_accessed }}</div>
+          </div>
+        <a href="{{ url_for('manage_items') }}" class="back-link">⬅️ Zurück zur Übersicht</a>
+    </div>
+</body>
+</html>

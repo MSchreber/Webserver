@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_styles.css') }}">
+</head>
+<body>
+    <div class="background">
+        <div class="admin-container">
+            <button class="logout-button" onclick="window.location.href='/logout'">Logout</button>
+            <h1>Dashboard 🚀</h1>
+            <p>Willkommen! Wähle deine Funktion :D</p>
+            <div class="tile-container">
+                <a href="/datawarehouse" class="tile">
+                    <span>Dateien</span>
+                </a>
+                <a href="/hue" class="tile">
+                    <span>Smart Home</span>
+                </a>
+                <a href="https://mschreber.github.io/AnalysisLernen/" class="tile">
+                    <span>Analysis Lernen</span>
+                </a>
+                <a href="/pomodoro" class="tile">
+                    <span>Pomodoro Timer</span>
+                </a>
+                <a href="/datawarehouse/VL" class="tile">
+                    <span> 🎓 Vorlesungsunterlagen</span>
+                </a>
+                <a href="https://frequent-vision-514.notion.site/Pr-fungsplan-25-d6f351bc11a045d99acdfba53b511141?pvs=4" class="tile">
+                    <span>🚧 Prüfungsplan</span>
+                </a>
+                <!-- Neue Kacheln -->
+                <a href="/items" class="tile">
+                    <span>Gegenstände</span>
+                </a>
+                <a href="#" class="tile">
+                    <span>🌐 Server-Verbindungen</span>
+                </a>
+                <a href="#" class="tile">
+                    <span>📅 Kalender</span>
+                </a>
+                <a href="#" class="tile">
+                    <span>💾 Backup-Verwaltung</span>
+                </a>
+                <a href="/logs" class="tile">
+                    <span>🔍 Logs & Überwachung</span>
+                </a>
+                <a href="#" class="tile">
+                    <span>🎨 Design-Einstellungen</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

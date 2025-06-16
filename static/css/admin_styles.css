@@ -1,0 +1,121 @@
+/* Global Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column; /* Allow vertical stacking */
+    justify-content: flex-start; /* Start content from the top */
+    align-items: center;
+    background: linear-gradient(135deg, #84fab0, #8fd3f4, #4facfe);
+    background-attachment: fixed;
+    overflow-y: auto; /* Enable scrolling if content overflows */
+}
+
+/* Container für das Admin-Dashboard */
+.admin-container {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    width: 80%;
+    max-width: 1200px;
+    text-align: center;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Add space from the top */
+}
+
+.admin-container h1 {
+    font-size: 2.5rem;
+    color: #4facfe;
+    margin-bottom: 20px;
+}
+
+.admin-container p {
+    color: #555;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Kachel-Container */
+.tile-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+/* Kachel-Styling */
+.tile {
+    background: linear-gradient(135deg, #ffffff, #e6f7ff);
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #007bff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #e6f7ff, #d0f0ff);
+}
+
+.tile span {
+    display: inline-block;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* Logout Button */
+.logout-button {
+    position: absolute;
+    top: 20px; /* Adjust to prevent clipping */
+    right: 20px;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    color: #fff;
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.logout-button:hover {
+    background: linear-gradient(135deg, #ff4b2b, #ff416c);
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .admin-container {
+        margin-top: 20px; /* Adjust for mobile */
+        padding: 20px;
+    }
+
+    .admin-container h1 {
+        font-size: 2rem;
+    }
+
+    .admin-container p {
+        font-size: 1rem;
+    }
+
+    .tile {
+        font-size: 1rem;
+        padding: 20px 10px;
+    }
+}

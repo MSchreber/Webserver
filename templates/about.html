@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.ico') }}" type="image/x-icon">
+    <title>Über Mich - Maximilian Schreber</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 800px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #fff;
+            text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
+        }
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #f1f1f1;
+            margin: 1rem 0;
+        }
+        .highlight {
+            color: #74b9ff;
+            font-weight: bold;
+        }
+        .button {
+            margin-top: 2rem;
+            text-decoration: none;
+            color: #fff;
+            background: linear-gradient(135deg, #74b9ff, #6c5ce7);
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.3s;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+        }
+        .button:hover {
+            background: linear-gradient(135deg, #6c5ce7, #74b9ff);
+            transform: scale(1.1);
+        }
+        footer {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #ccc;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Über Mich</h1>
+        <p> Servas. Hier wird gerade etwas wildes Gebaut! Bleib bereit und sei gespannt!</p>
+        <a href="{{ url_for('index') }}">Zurück zur Startseite</a>
+    </div>
+    <footer>&copy; 2024 Maximilian Schreber. Alle Rechte vorbehalten.</footer>
+</body>
+</html>

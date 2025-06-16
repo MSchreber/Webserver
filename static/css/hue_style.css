@@ -1,0 +1,101 @@
+/* Allgemeines Styling */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+    color: #333;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Weißer Hauptcontainer */
+.main-container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 1200px;
+    text-align: center;
+    overflow-x: auto;
+}
+
+/* Horizontale Anordnung der Lampen */
+.lights-container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 20px 0;
+    white-space: nowrap;
+}
+
+/* Einzelne Lampenkachel */
+.light-tile {
+    position: relative;
+    width: 200px;
+    height: 120px;
+    background: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+/* Wenn Licht AN ist, Hintergrundfarbe anpassen */
+.light-tile.on {
+    background: #FFD700;
+    color: black;
+}
+
+/* Name der Lampe */
+.light-name {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* Lichtsymbol */
+.light-icon {
+    font-size: 2rem;
+}
+
+/* Stufenweise CSS-Klassen für die Helligkeit */
+.light-fill.fill-0 { width: 0%; }
+.light-fill.fill-10 { width: 10%; }
+.light-fill.fill-20 { width: 20%; }
+.light-fill.fill-30 { width: 30%; }
+.light-fill.fill-40 { width: 40%; }
+.light-fill.fill-50 { width: 50%; }
+.light-fill.fill-60 { width: 60%; }
+.light-fill.fill-70 { width: 70%; }
+.light-fill.fill-80 { width: 80%; }
+.light-fill.fill-90 { width: 90%; }
+.light-fill.fill-100 { width: 100%; }
+
+/* Dynamische Helligkeitsfüllung (Breite statt Höhe) */
+.light-fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    transition: width 0.3s ease-in-out;
+}
+
+/* Falls Lampe aus → Kein Füllbereich */
+.light-tile.off .light-fill {
+    width: 0%;
+}
+
+/* Falls keine Dimmfunktion → Immer 100% */
+.no-dim .light-fill {
+    width: 100% !important;
+}

@@ -1,0 +1,209 @@
+/* Gesamte Seite */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+    color: #333;
+    height: 100%; /* Volle Höhe */
+}
+
+/* Hauptcontainer */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Footer bleibt unten */
+    height: 100%; /* Volle Höhe */
+}
+
+/* Inhalt */
+.content {
+    flex: 1; /* Nimmt den verfügbaren Platz zwischen Header und Footer ein */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hello-image {
+    max-width: 25%; /* Bildgröße anpassen */
+    height: auto;   /* Proportionen beibehalten */
+    margin-bottom: 1rem;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.0); /* Transparenter Rand */
+}
+
+.text-container {
+    background: #fff;
+    padding: 30px 40px; /* Mehr Padding für vertikalen Raum */
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px; /* Breite des Containers */
+    text-align: center;
+    margin: 20px auto; /* Zentrierung mit Abstand oben/unten */
+}
+
+.text-container p {
+    font-size: 1.2rem; /* Schriftgröße */
+    color: #333;
+    margin: 15px 0; /* Vertikaler Abstand zwischen den Absätzen */
+    line-height: 1.6; /* Zeilenhöhe für besseren Lesefluss */
+}
+
+.button-group {
+    display: flex;
+    justify-content: center; /* Zentriert die Buttons horizontal */
+    gap: 20px; /* Mehr Abstand zwischen den Buttons */
+    margin-top: 25px; /* Abstand der Buttons zum Text */
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    color: #fff;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    border-radius: 25px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    transform: scale(1.1);
+}
+
+/* Login Button */
+.login-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    color: #fff;
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.login-btn:hover {
+    background: linear-gradient(135deg, #ff4b2b, #ff416c);
+    transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    background: none; /* Kein Hintergrund */
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #74ebd5;
+}
+
+/* Gesamte Seite */
+.construction-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Seite füllt die gesamte Höhe */
+    text-align: center;
+    background: linear-gradient(135deg, #ff8000, #ff3300); /* Greller Orange Gradient */
+    color: #fff; /* Weißer Text für Kontrast */
+    padding: 20px;
+    overflow: hidden; /* Kein Scrollen */
+}
+
+/* Warn-Header */
+.warning-header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333; /* Dunkler Text */
+    background: #fff; /* Weißer Hintergrund */
+    padding: 15px 30px; /* Innenabstand */
+    border-radius: 25px; /* Großer Kurvenradius */
+    display: inline-block; /* Passende Breite zum Text */
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Leichter Schatten */
+}
+
+/* Text mit hervorgehobenem Hintergrund */
+.text-container {
+    background: rgba(255, 255, 255, 0.9); /* Halbtransparenter weißer Hintergrund */
+    padding: 25px;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Leichter Schatten */
+}
+
+.text-container p {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+/* Warnbaken-Streifen */
+.flashing-warning {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 600px;
+    height: 50px;
+    overflow: hidden;
+    position: relative;
+}
+
+.stripe {
+    background: linear-gradient(45deg, #ff8000 50%, white 50%);
+    background-size: 40px 40px;
+    width: 100%;
+    height: 100%;
+    animation: move 1s linear infinite;
+}
+
+@keyframes move {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 40px 40px;
+    }
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    color: #fff;
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Bläulich-violetter Farbverlauf */
+    border-radius: 25px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb); /* Umgekehrter Farbverlauf beim Hover */
+    transform: scale(1.1);
+}

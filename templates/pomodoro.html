@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <style>
+        /* Global Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Hintergrund mit Farbverlauf */
+        .background {
+            height: 100%;
+            background: linear-gradient(135deg, #ff7eb3, #ff758c, #ff9770);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Container für den Timer */
+        .container {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Timer Kreis */
+        .circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(#4caf50 100%, rgba(255, 255, 255, 0.3) 100% 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin: 20px auto;
+        }
+        .timer {
+            font-size: 2em;
+            position: absolute;
+            background-color: #ffffff;
+            border-radius: 50%;
+            width: 180px;
+            height: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Button Styling */
+        button {
+            width: 100%;
+            padding: 10px 15px;
+            font-size: 1rem;
+            color: white;
+            background: #ff4b6e;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #e03a5b;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            .timer {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body class="background">
+    <div class="container">
+        <div class="circle" id="progress-circle">
+            <div class="timer" id="timer">25:00</div>
+        </div>
+        <button onclick="startTimer()">Start</button>
+        <button onclick="pauseTimer()">Pause</button>
+        <button onclick="resetTimer()">Reset</button>
+    </div>
+
+    <script>
+        let timeLeft = 25 * 60;
+        let timerInterval;
+        let running = false;
+        let totalTime = 25 * 60;
+
+        function updateDisplay() {
+            const minutes = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+            const seconds = (timeLeft % 60).toString().padStart(2, '0');
+            document.getElementById('timer').innerText = `${minutes}:${seconds}`;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const progressElement = document.getElementById('progress-circle');
+            const progress = (timeLeft / totalTime) * 100;
+            progressElement.style.background = `conic-gradient(#4caf50 ${progress}%, rgba(255, 255, 255, 0.3) ${progress}% 100%)`;
+        }
+        
+        function startTimer() {
+            if (!running) {
+                running = true;
+                timerInterval = setInterval(() => {
+                    if (timeLeft > 0) {
+                        timeLeft--;
+                        updateDisplay();
+                    } else {
+                        clearInterval(timerInterval);
+                        running = false;
+                        alert('Pomodoro beendet! Zeit für eine Pause!');
+                    }
+                }, 1000);
+            }
+        }
+        
+        function pauseTimer() {
+            clearInterval(timerInterval);
+            running = false;
+        }
+        
+        function resetTimer() {
+            clearInterval(timerInterval);
+            running = false;
+            timeLeft = 25 * 60;
+            updateDisplay();
+        }
+
+        updateDisplay();
+    </script>
+</body>
+</html>

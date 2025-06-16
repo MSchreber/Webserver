@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.ico') }}" type="image/x-icon">
+    <title>Max - Hello</title>
+    <!-- Verlinkung zur CSS-Datei -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Login Button -->
+        <a href="/dashboard" class="login-btn">Login</a>
+
+        <!-- Inhalt -->
+        <div class="content">
+            <img src="{{ url_for('static', filename='images/hello.png') }}" alt="Hello Image" class="hello-image">
+            <div class="text-container">
+                <p>Hi, ich bin Max!</p>
+                <p>Hier findest du ein paar Details über mich und was mich aktuell bewegt. Aber hauptsächlich dient dieser Server als privates Hobbyprojekt mit der einen oder anderen versteckten Funktion.</p>
+                
+                <!-- Buttons -->
+                <div class="button-group">
+                    <a href="/pomodoro" class="btn">Pomodoro 🍅</a>
+                    <a href="https://youtu.be/dQw4w9WgXcQ?si=Fkt-hS1djjUfr57A" target="_blank" class="btn">Maximilians Passwörter 🔑</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            &copy; 2024 Maximilian Schreber | 
+            <a href="https://www.linkedin.com/in/maximilian-stefan-schreber-209513299" target="_blank">LinkedIn</a> | 
+            <a href="https://github.com/MSchreber" target="_blank">GitHub</a>
+        </footer>
+    </div>
+</body>
+</html>

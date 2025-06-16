@@ -1,0 +1,219 @@
+/* Global Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    min-height: 100%; /* Mindesthöhe, um Inhalte vollständig anzuzeigen */
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(135deg, #84fab0, #8fd3f4, #4facfe);
+    background-attachment: fixed;
+}
+
+body {
+    display: block; /* Block-Layout erlaubt Scrollen */
+    padding-top: 20px; /* Optionaler Abstand oben */
+}
+
+/* Container für den Explorer */
+.container {
+    background: rgba(255, 255, 255, 0.95); /* Leicht transparente weiße Box */
+    border-radius: 12px;
+    padding: 30px;
+    width: 70vw; /* Setzt die Breite auf 90% der Viewport-Breite */
+    max-width: 1200px; /* Beschränkt die maximale Breite */
+    text-align: center;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box; /* Verhindert Überschreitungen durch Padding */
+    margin: 0 auto; /* Zentriert das Element horizontal */
+}
+
+/* Header-Styling */
+h1 {
+    font-size: 2.5rem;
+    color: #4facfe;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Pfad-Styling */
+.path {
+    font-weight: bold;
+    color: #4facfe;
+    word-wrap: break-word;
+    text-align: center;
+    max-width: 100%;
+}
+
+/* Liste der Dateien */
+.file-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    width: 100%; /* Liste füllt den Container */
+    max-width: 1600px;
+}
+
+.file-list li:hover {
+    background: #e6f7ff;
+    transform: translateY(-2px);
+}
+
+/* Der Link füllt den gesamten Bereich des Listenelements */
+.file-list li a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+    width: 100%; /* Der Link nimmt die volle Breite ein */
+    height: 100%; /* Der Link nimmt die volle Höhe ein */
+    display: block; /* Block-Level für die gesamte Fläche */
+    text-align: left; /* Text linksbündig ausrichten */
+}
+
+.file-list li a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Logout-Schaltfläche */
+.logout-button {
+    margin-top: 20px;
+    background: #ff4b6e;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+
+.logout-button:hover {
+    background: #e03a5b;
+    transform: 
+    translateY(-2px);
+}
+
+.upload-button {
+    margin-top: 20px;
+    background: #3234aa;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.upload-button:hover {
+    background: #c438e0;
+    transform: 
+    translateY(-2px);
+}
+
+.back-button {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    background: #ff4b6e;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: background 0.3s;
+    align-self: flex-start;
+}
+.back-button:hover {
+    background: #e03a5b;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+/* updated */
+/* Datei-Liste */
+.file-list li {
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #f9f9f9;
+    transition: background 0.3s, transform 0.2s;
+    font-size: 1.1rem;
+    display: flex; /* Ermöglicht horizontale Ausrichtung von Inhalt und Button */
+    justify-content: space-between; /* Abstand zwischen Dateiname und Button */
+    align-items: center;
+    cursor: pointer;
+    min-width: 300px;
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+}
+
+.file-link {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+    flex-grow: 1; /* Der Link nimmt so viel Platz wie möglich ein */
+    text-align: left;
+    overflow: hidden; /* Langer Text wird abgeschnitten */
+    white-space: nowrap; /* Kein Umbruch */
+    text-overflow: ellipsis; /* Zeigt "..." für abgeschnittenen Text */
+}
+
+/* Share-Button */
+.share-button {
+    margin-left: 10px; /* Abstand bleibt gleich */
+    padding: 3px 10px; /* Weniger Innenabstand */
+    background: linear-gradient(135deg, #84fab0, #8fd3f4); /* Gradient bleibt gleich */
+    color: white;
+    border-radius: 3px; /* Kleinere Rundung */
+    font-size: 0.8rem; /* Kleinere Schriftgröße */
+    font-weight: normal; /* Weniger auffällige Schrift */
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    white-space: nowrap;
+    max-width: 20px;
+}
+
+.share-button:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #8fd3f4, #4facfe); /* Dunklerer Gradient bei Hover */
+}
+
+
+
+
+/* Responsiveness */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        width: 95%; /* Breite auf kleineren Bildschirmen */
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .file-list li {
+        font-size: 0.9rem;
+        flex-direction: column;
+    }
+
+    .file-list li:hover {
+        transform: none;
+    }
+}
+

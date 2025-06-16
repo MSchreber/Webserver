@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Gegenstandsverwaltung</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/items.css') }}">
+  <style>
+    body {
+      background: linear-gradient(to right, #f8f9fa, #e3f2fd);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #2c3e50;
+    }
+    form input, form button {
+      margin: 0.5rem;
+    }
+    .gradient-btn {
+      background: linear-gradient(45deg, #00c6ff, #0072ff);
+      border: none;
+      color: white;
+      font-weight: bold;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+    .gradient-btn:hover {
+      background: linear-gradient(45deg, #0072ff, #00c6ff);
+    }
+    .table th {
+      background-color: #0072ff;
+      color: white;
+    }
+    .table td, .table th {
+      vertical-align: middle;
+    }
+    .form-control {
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .form-inline input {
+      display: inline-block;
+      width: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>📦 Gegenstandsverwaltung</h1>
+
+  <div class="container">
+    <form method="get" action="/items" class="d-flex justify-content-center mb-4">
+      <input type="text" name="query" class="form-control w-50" placeholder="🔍 Suche nach Name oder Code..." value="{{ query }}">
+      <button type="submit" class="gradient-btn ms-2">Suchen</button>
+    </form>
+
+    <form method="post" action="/items" class="row g-3 justify-content-center mb-5">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <div class="col-md-2">
+        <input type="text" name="name" class="form-control" placeholder="Name" required>
+      </div>
+      <div class="col-md-2">
+        <input type="text" name="room" class="form-control" placeholder="Raum" required>
+      </div>
+      <div class="col-md-2">
+        <input type="text" name="position" class="form-control" placeholder="Position" required>
+      </div>
+      <div class="col-md-3">
+        <input type="text" name="content" class="form-control" placeholder="Inhalt" required>
+      </div>
+      <div class="col-md-2">
+        <button type="submit" class="gradient-btn w-100">➕ Hinzufügen</button>
+      </div>
+    </form>
+
+    <table class="table table-hover shadow-sm">
+      <thead>
+        <tr>
+          <th>Kürzel</th>
+          <th>Name</th>
+          <th>Raum</th>
+          <th>Position</th>
+          <th>Inhalt</th>
+          <th>Aktion</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+        <tr>
+          <td>{{ item.id }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.room }}</td>
+          <td>{{ item.position }}</td>
+          <td>{{ item.content }}</td>
+          <td><a href="{{ url_for('delete_item', item_id=item.id) }}" class="btn btn-danger btn-sm">🗑️ Löschen</a></td>
+          <td><a href="{{ url_for('item_detail', item_id=item.id) }}">🔍 Details</a></td>
+          <td><a href="{{ url_for('print_item', item_id=item.id) }}">🖨️ Nochmal drucken</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="text-center mt-4">
+      <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">⬅️ Zurück zum Dashboard</a>
+    </div>
+  </div>
+</body>
+</html>
